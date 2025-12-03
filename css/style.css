@@ -17,7 +17,7 @@
 }
 
 body {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Quicksand', sans-serif;
   background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
   color: var(--text-color);
   line-height: 1;
@@ -62,7 +62,7 @@ body {
   font-weight: 700;
   text-align: right;
   outline: none;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Quicksand', sans-serif;
   letter-spacing: 2px;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -73,18 +73,19 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
+  font-size: 1.5em;
 }
 
 .btn {
   color: var(--text-color);
-  padding: 15px;
-  font-size: 1.25em;
+  aspect-ratio: 1/1;
+  font-size: 1.5em;
   font-weight: 600;
   border: 1px solid var(--border-color);
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Quicksand', sans-serif;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -197,7 +198,12 @@ body {
   transform: translateY(0);
 }
 
+.btn i {
+  font-size: 0.8em;
+}
+
 .btn-zero {
+  aspect-ratio: unset;
   grid-column: span 2;
 }
 
@@ -210,8 +216,7 @@ body {
     font-size: 2em;
   }
 
-  .btn {
-    padding: 15px;
-    font-size: 1em;
+  .buttons {
+    font-size: 1.2em;
   }
 }
