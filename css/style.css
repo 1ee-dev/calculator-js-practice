@@ -1,0 +1,217 @@
+:root {
+  --primary-color: hsl(240, 20%, 15%);
+  --secondary-color: hsl(from var(--primary-color) h s calc(l + 5));
+  --accent-color: hsl(190, 100%, 50%);
+  --operator-color: hsl(0, 100%, 70%);
+  --equals-color: hsl(130, 55%, 55%);
+  --text-color: hsl(0, 0%, 100%);
+  --border-color: hsl(240, 15%, 30%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+  color: var(--text-color);
+  line-height: 1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.calculator {
+  background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 20px 60px hsla(0, 0%, 0%, 0.5), inset 0 1px 0 hsla(0, 0%, 100%, 0.1);
+  width: 100%;
+  max-width: 320px;
+  border: 1px solid var(--border-color);
+}
+
+.display {
+  margin-bottom: 20px;
+  background: hsla(0, 0%, 0%, 0.3);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.display-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--accent-color);
+  font-size: 2.5em;
+  font-weight: 700;
+  text-align: right;
+  outline: none;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 2px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.btn {
+  color: var(--text-color);
+  padding: 15px;
+  font-size: 1.25em;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'JetBrains Mono', monospace;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: hsla(0, 0%, 100%, 0.1);
+  transition: left 0.3s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-number {
+  background: linear-gradient(145deg, var(--secondary-color), var(--primary-color));
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.btn-number:hover {
+  background: linear-gradient(
+    145deg,
+    hsl(from var(--secondary-color) h s calc(l + 10)),
+    var(--secondary-color)
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px hsla(from var(--accent-color) h s l / 0.3);
+}
+
+.btn-number:active {
+  transform: translateY(0);
+}
+
+.btn-operator {
+  background: linear-gradient(
+    145deg,
+    var(--operator-color),
+    hsl(from var(--operator-color) h s calc(l - 10))
+  );
+  border-color: var(--operator-color);
+}
+
+.btn-operator:hover {
+  background: linear-gradient(
+    145deg,
+    hsl(from var(--operator-color) h s calc(l + 10)),
+    var(--operator-color)
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px hsla(from var(--operator-color) h s l / 0.3);
+}
+
+.btn-operator:active {
+  transform: translateY(0);
+}
+
+.btn-function {
+  background: linear-gradient(
+    145deg,
+    var(--accent-color),
+    hsl(from var(--accent-color) h s calc(l - 10))
+  );
+  color: var(--primary-color);
+  border-color: var(--accent-color);
+}
+
+.btn-function:hover {
+  background: linear-gradient(
+    145deg,
+    hsl(from var(--accent-color) h s calc(l + 10)),
+    var(--accent-color)
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px hsla(from var(--accent-color) h s l / 0.3);
+}
+
+.btn-function:active {
+  transform: translateY(0);
+}
+
+.btn-equals {
+  background: linear-gradient(
+    145deg,
+    var(--equals-color),
+    hsl(from var(--equals-color) h s calc(l - 10))
+  );
+  border-color: var(--equals-color);
+}
+
+.btn-equals:hover {
+  background: linear-gradient(
+    145deg,
+    hsl(from var(--equals-color) h s calc(l + 10)),
+    var(--equals-color)
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px hsla(from var(--equals-color) h s l / 0.3);
+}
+
+.btn-equals:active {
+  transform: translateY(0);
+}
+
+.btn-zero {
+  grid-column: span 2;
+}
+
+@media (max-width: 480px) {
+  .calculator {
+    padding: 15px;
+  }
+
+  .display-input {
+    font-size: 2em;
+  }
+
+  .btn {
+    padding: 15px;
+    font-size: 1em;
+  }
+}
